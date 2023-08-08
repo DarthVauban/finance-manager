@@ -1,12 +1,15 @@
 import React from "react";
 import { Link } from "react-router-dom";
+import { useSelector } from "react-redux";
 import "./BalanceCard.scss";
 
-const BalanceCard = ({}) => {
+const BalanceCard = props => {
+  const { id, accountType, accountNumber, balanceAmount, deleteCard } = props;
+  const { loading } = useSelector(state => state.balances);
   return (
     <div className="balance-card">
       <div className="header">
-        <div className="credit-card">Credit Card</div>
+        <div className="credit-card">{accountType}</div>
         <div className="type">
           <div className="frame-40714">
             <div className="master-card">Master Card</div>
@@ -24,16 +27,21 @@ const BalanceCard = ({}) => {
       <div className="content">
         <div className="account-details">
           <div className="account-number">
-            <div className="_133-456-886-8">3388 4556 8860 8***</div>
+            <div className="_133-456-886-8">{accountNumber}</div>
             <div className="account-number2">Account Number</div>
           </div>
           <div className="total-amount">
-            <div className="_25000">$25000</div>
+            <div className="_25000">${balanceAmount}</div>
             <div className="total-amount2">Total amount</div>
           </div>
         </div>
         <div className="footer">
-          <div className="remove">Remove</div>
+          <div
+            className="remove"
+            onClick={() => deleteCard(id)}
+          >
+            Remove
+          </div>
           <Link
             to={"/balances/1"}
             className="button"

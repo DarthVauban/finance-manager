@@ -1,15 +1,26 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
+import { useSelector, useDispatch } from "react-redux";
 import { MainLayout } from "@/layouts/MainLayout/MainLayout";
 import BalanceCard from "@/components/BalanceCard";
 import AddAccount from "@/components/AddAccount";
 import BaseTitle from "@/components/shared/BaseTitle";
 import "./Balances.scss";
 import BalanceModal from "@/components/Modals/BalanceModal";
-
-const balances = [1, 2, 3, 4, 5];
+import { getBalance, deleteBalance } from "@/store/BalancesSlice";
 
 export const Balances = () => {
   const [isOpenBalanceModal, setIsOpenBalanceModal] = useState(false);
+  const { balances, loading } = useSelector(state => state.balances);
+  const { user } = useSelector(state => state.auth);
+  const dispatch = useDispatch();
+
+  useEffect(() => {
+    dispatch(getBalance(user.id));
+  }, [user]);
+
+  const remove = id => {
+    dispatch(deleteBalance(id));
+  };
 
   return (
     <MainLayout>
@@ -23,7 +34,8 @@ export const Balances = () => {
           return (
             <BalanceCard
               {...b}
-              key={b}
+              key={b.id}
+              deleteCard={remove}
             />
           );
         })}

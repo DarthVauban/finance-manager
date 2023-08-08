@@ -68,20 +68,13 @@
   ],
   "balances": [
     {
-      "id": 1,
-      "name": "name",
-      "category": "category",
-      "accountNumber": "",
-      "balance": "",
-      "userId": 1
-    },
-    {
-      "id": 2,
-      "name": "name 2 ",
-      "category": "category 2",
-      "accountNumber": "",
-      "balance": "",
-      "userId": 2
+      "bankName": "345345",
+      "branchName": "345345",
+      "accountType": "Checking",
+      "accountNumber": "345345",
+      "balanceAmount": "345345",
+      "userId": 1,
+      "id": "17130cde-0e64-43de-91e4-896c451e4d7a"
     }
   ],
   "goals": {},
@@ -186,6 +179,16 @@
       "amount": "111",
       "userId": "69e4c56b-b29a-457f-a0bb-c895dbc29d35",
       "id": 3
+    },
+    {
+      "date": "2023-06-13T21:00:00.000Z",
+      "logo": "logo",
+      "title": "24324324",
+      "description": "324234234",
+      "lastChange": "2023-06-28T21:54:37.414Z",
+      "amount": "234324234",
+      "userId": 1,
+      "id": 4
     }
   ]
 }
